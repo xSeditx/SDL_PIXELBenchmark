@@ -1,0 +1,51 @@
+
+Jan 2 
+Started build
+
+Jan 3
+Added Sight, Hit Some basic other functions to handle manipution and wrapping of data in Multicell class
+Consideration is being made if Cell class is needed at all but will probably keep in for future implimentations.
+
+4:36am Jan 4
+Finished as getting ready to Add the main loop. Hitfunction needs to be handled 
+
+jan 5
+Nothing really set the world values but continuing to get an error with the cells going out of bounds on the world
+Seems to be solved with WRAPX.y At the draw function and when WORLD is being assigned in it, a BOUNDS check needs to be applied before any memory
+manipulation is applied else these errors are going to continue to fucking piss me off on a regular basis not to mention destroy performance if I have to k
+keep checking in 10 frigging different places.
+
+861 ERROR SAME SHIT.... 
+The -1 error on the SET_PIXEL function is still being a pain in my ass as well so as stated, fix this shit its annoying.
+
+I think I need to set the potential position because when I set it to potential the value of which never been wrapped that is causing the problem... 
+Why the fuck it can undergo a couple wraps before it messes up is beyond me and makes no sense. SO WRAP THE FUCKING POTENTIALX/Y tomorrow!!!!!!
+
+
+
+Jan 7
+Fixed some of the errors, Corrected the screen/world xy wrap around functions which helped a little.
+More vector errors with the Tombstones... Currently returning an Absurd value which needs fixed tomorrow
+Death is a real thing now which comes from collisions with the enemy or a wall. 
+The WorldMaze is generated at the start and collisions appear to be functioning correctly.
+
+Jan 7
+BREEDING Successful. Food added although issues with Collision with food. Creatures are stopping when they collide instead of eating and moving on.
+
+
+Jan 10... The Collision error I am almost sure is being caused by the fact that I am rotating the creature. I may be moving it and checking for collision but
+I am rotating it first so the XY offsets are not the same regardless if I moved it back to where it was before collision it moves back with an 
+updated rotation.
+
+I currently fixed the collision problem by saving the state at the start of move creatures and restored it if by any chance a collision occured,
+This is working well however the large the amount of cells the more poorly it performs. I believe rotation should be
+done on a Potential system same as XY are however my attempts to set it up failed, I did find that the multicell was returning 
+an ID out of range if the max amount of creatures had already been made which I believe is the cause of my vector error
+which has been burdening me all this time.
+
+Jan 13 
+
+Added Keyboard support to change the State of the Boolean flags for ShowVision, ShowSex  etc. 
+Changed the way that everything is processed when it comes to rotation so that every cell has its own handler and the
+OFFSET for each cell also has its own Adjusted state to reflect the effects of rotation HOWEVER it appears to be rotating backwards
+compared to what the Creature rotates.
